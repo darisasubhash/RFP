@@ -1,9 +1,7 @@
 package com.addressbook;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -101,6 +99,36 @@ public class AddressBook {
             System.out.println("AddressBook loaded from file sucessfully..");
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    // UC-14 read and write to csv file
+    public void writeToCSV(String fileName) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(fileName))) {
+            String[] header = {"FirstName","LastName","Address","City","State","Zip","PhoneNumber","Email"};
+            writer.writeNext(header);
+            for (Contact contact : contactList) {
+                String[] data = {
+                        contact.getFirstName(),contact.getLastName(),contact.getAddress(), contact.getCity(),
+                        contact.getState(),contact.getZip(),contact.getPhoneNumber(),contact.getEmail()};
+                writer.writeNext(data);
+            }
+            System.out.println("Address Book saved as CSV successfully!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void readFromCSV(String fileName){
+        try(CSVReader reader = new CSVReader(new FileReader(fileName))){
+            String[] line;
+            reader.readNext();
+            while ((line = reader.readNext())!=null){
+                Contact contact=new Contact(line[0],line[1],line[2],line[3],line[4],line[5],line[6],line[7]);
+                contactList.add(contact);
+            }
+            System.out.println("AddressBook loaded from CSV successfully...");
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
