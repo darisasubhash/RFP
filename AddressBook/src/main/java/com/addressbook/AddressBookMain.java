@@ -38,6 +38,8 @@ public class AddressBookMain {
                 case 16 -> readFromFile();
                 case 17 -> writeCSV();
                 case 18 -> readCsv();
+                case 19 -> writeJSON();
+                case 20 -> readJson();
                 case 0 -> System.out.println("Exiting Address Book Program...");
                 default -> System.out.println("Invalid choice!");
             }
@@ -64,6 +66,8 @@ public class AddressBookMain {
         System.out.println("16. Read Address Book from File ");
         System.out.println("17. Write Address Book as CSV ");
         System.out.println("18. Read Address Book from CSV ");
+        System.out.println("19. Write Address Book as JSON ");
+        System.out.println("20. Read Address Book from JSON ");
         System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
     }
@@ -251,5 +255,20 @@ public class AddressBookMain {
         System.out.println("Enter CSV File name : ");
         String fileName = scanner.nextLine();
         addressBook.readFromCSV(fileName);
+    }
+    //UC-15 writing and reading from json
+    private static void writeJSON() {
+        AddressBook addressBook = getAddressBook();
+        if (addressBook == null) return;
+        System.out.print("Enter JSON file name : ");
+        String fileName = scanner.nextLine();
+        addressBook.writeToJson(fileName);
+    }
+    private static void readJson(){
+        AddressBook addressBook = getAddressBook();
+        if (addressBook == null) return;
+        System.out.println("Enter Json file name : ");
+        String fileName = scanner.nextLine();
+        addressBook.readFromJson(fileName);
     }
 }

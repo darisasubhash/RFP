@@ -1,7 +1,11 @@
 package com.addressbook;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -113,7 +117,7 @@ public class AddressBook {
                         contact.getState(),contact.getZip(),contact.getPhoneNumber(),contact.getEmail()};
                 writer.writeNext(data);
             }
-            System.out.println("Address Book saved as CSV successfully!");
+            System.out.println("Address Book saved as CSV successfully...");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -128,6 +132,29 @@ public class AddressBook {
             }
             System.out.println("AddressBook loaded from CSV successfully...");
 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    //UC-15 read ans write to json
+    public void writeToJson(String fileName){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try(FileWriter writer = new FileWriter(fileName)){
+            gson.toJson(contactList,writer);
+            System.out.println("AddressBook saved to json successfully...");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void readFromJson(String fileName){
+        Gson gson=new Gson();
+        Type contactListType =new TypeToken<List<Contact>>(){}.getType();
+        try(FileReader reader = new FileReader(fileName)){
+            List<Contact> contactsFromList = gson.fromJson(reader,contactListType);
+            if(contactsFromList!=null){
+                contactList.addAll(contactsFromList);
+            }
+            System.out.println("AddressBook loaded from Json successfully...");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

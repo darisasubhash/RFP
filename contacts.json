@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "subhash",
+    "lastName": "darisa",
+    "address": "kadapa",
+    "city": "kadapa",
+    "state": "AP",
+    "zip": "76476",
+    "phoneNumber": "628764632",
+    "email": "subhash@gmail.com"
+  },
+  {
+    "firstName": "anil",
+    "lastName": "anil",
+    "address": "BTM",
+    "city": "bnglr",
+    "state": "KA",
+    "zip": "78565",
+    "phoneNumber": "874457547",
+    "email": "anil@gmail.com"
+  },
+  {
+    "firstName": "arun",
+    "lastName": "arun",
+    "address": "knl",
+    "city": "knl",
+    "state": "AP",
+    "zip": "98678",
+    "phoneNumber": "986572883",
+    "email": "arun@gmail.com"
+  }
+]
