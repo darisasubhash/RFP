@@ -7,6 +7,8 @@
     </javadoc-paths>
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/AddressBook/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CensusAnalyser/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CensusAnalyser/src/test/java" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
