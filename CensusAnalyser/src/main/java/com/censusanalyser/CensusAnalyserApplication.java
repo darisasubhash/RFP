@@ -5,9 +5,10 @@ public class CensusAnalyserApplication {
         System.out.println("Welcome to Indian States Census Analyser");
         StateCensusAnalyser analyser = new StateCensusAnalyser();
         try {
-            int count = analyser.loadIndiaCensusData("IndiaStateCensusData.csv");
-            System.out.println("Number of Records: " + count);
-        } catch (Exception e) {
+            int count = analyser.loadCSVData(CSVStateCensus.class,
+                    "C:/Users/DELL/IdeaProjects/RFP/CensusAnalyser/resources/IndianStateCensusData.csv");
+            System.out.println("Records Loaded: " + count);
+        } catch (CensusException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
